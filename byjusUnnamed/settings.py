@@ -192,3 +192,7 @@ SIMPLE_JWT = {
 
 LOGIN_URL = 'rest_framework:login'
 LOGOUT_URL = 'rest_framework:logout'
+
+
+import django_heroku
+django_heroku.settings(locals())
