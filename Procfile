@@ -1,1 +1,1 @@
-web: gunicorn bootcamp.wsgi --log-file -
+web: gunicorn byjusUnnamed.wsgi --log-file -
