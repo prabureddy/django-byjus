@@ -69,4 +69,5 @@ uritemplate==3.0.1
 urllib3==1.25.9
 virtualenv==20.0.25
 wcwidth==0.2.5
+whitenoise==5.1.0
 wrapt==1.11.2
