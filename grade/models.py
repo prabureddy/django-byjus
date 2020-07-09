@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.core.exceptions import ValidationError
+
 
 class Program(models.Model):
 
@@ -12,7 +14,7 @@ class Program(models.Model):
 
 class Grade(models.Model):
 
-    program = models.OneToOneField(
+    program = models.ForeignKey(
         Program, on_delete=models.CASCADE)
 
     grade_text = models.CharField(max_length=10, default="", unique=True, blank=False,
@@ -22,4 +24,10 @@ class Grade(models.Model):
                                           help_text="Confirm grade")
 
     def __str__(self):
-        return self.grade_text
+        return self.program.program_text + " - " + self.grade_text
+
+    def clean(self):
+        grade = self.grade_text
+        c_grade = self.confirm_grade_text
+        if grade != c_grade:
+            raise ValidationError("Grade Text and Confirm Grade Text are not same!!!")

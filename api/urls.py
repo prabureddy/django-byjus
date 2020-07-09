@@ -1,7 +1,7 @@
 from rest_framework import routers
 from django.urls import path, include
 
-from api.serializers_views import registration, studentRegistration, teacherRegistration
+from api.serializers_views import *
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -15,6 +15,17 @@ schema_view = get_swagger_view(title='Pastebin API')
 
 app_name = "api"
 
+
+programRouter = routers.SimpleRouter()
+programRouter.register(r'program', ProgramViewSet)
+
+
+gradeRouter = routers.SimpleRouter()
+gradeRouter.register(r'grade', GradeViewSet)
+
+checkEmailExistsRouter = routers.SimpleRouter()
+checkEmailExistsRouter.register(r'user/email', CheckEmailExistsViewSet, basename='CheckEmailExists')
+
 urlpatterns = [
     path('docs/', schema_view),
     path('signup/usersignup/', registration, name='user-signup'),
@@ -24,3 +35,7 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 ]
+
+urlpatterns += programRouter.urls
+urlpatterns += gradeRouter.urls
+urlpatterns += checkEmailExistsRouter.urls

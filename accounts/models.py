@@ -21,9 +21,9 @@ class User(AbstractUser):
 
 class StudentProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    grade = models.OneToOneField(Grade, on_delete=models.CASCADE)
+    grade = models.ForeignKey(Grade, on_delete=models.CASCADE)
     mobile = models.BigIntegerField(
-        null=False, blank=False, validators=[validate_mobile_number])
+        null=True, blank=True, validators=[validate_mobile_number])
     verify = models.BooleanField(default=False)
 
     def clean_mobile(self):
@@ -31,15 +31,15 @@ class StudentProfile(models.Model):
         mobile = self.mobile
         mobile = len(str(mobile))
 
-        if mobile == 10:
+        if mobile >= 10 and mobile <= 13:
             pass
         else:
             raise ValidationError("Enter Correct Mobile No.!!!")
 
         return mobile
 
-        def __str__(self):
-            return self.user.username
+    def __str__(self):
+        return self.user.username
 
 
 class TeacherProfile(models.Model):
@@ -54,12 +54,12 @@ class TeacherProfile(models.Model):
         mobile = self.mobile
         mobile = len(str(mobile))
 
-        if mobile == 10:
+        if mobile >= 10 and mobile <= 13:
             pass
         else:
             raise ValidationError("Enter Correct Mobile No.!!!")
 
         return mobile
 
-        def __str__(self):
-            return self.user.username
+    def __str__(self):
+        return self.user.username
