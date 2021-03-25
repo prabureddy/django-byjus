@@ -58,7 +58,7 @@ pylint==1.8.4
 pyOpenSSL==19.1.0
 pyparsing==2.4.7
 pytz==2020.1
-PyYAML==5.3.1
+PyYAML==5.4
 requests==2.24.0
 ruamel.yaml==0.16.10
 ruamel.yaml.clib==0.2.0
