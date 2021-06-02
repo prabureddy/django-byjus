@@ -70,7 +70,7 @@ tox==2.4.1
 traitlets==4.3.3
 Unidecode==1.1.1
 uritemplate==3.0.1
-urllib3==1.25.9
+urllib3==1.26.5
 virtualenv==20.0.25
 wcwidth==0.2.5
 whitenoise==5.1.0
