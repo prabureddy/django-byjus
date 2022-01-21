@@ -28,7 +28,7 @@ gunicorn==20.0.4
 idna==2.9
 inflection==0.5.0
 ipdb==0.10.1
-ipython==7.15.0
+ipython==7.16.3
 ipython-genutils==0.2.0
 isort==4.3.21
 itypes==1.2.0
